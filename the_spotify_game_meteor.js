@@ -31,7 +31,7 @@ if (Meteor.isClient) {
             //continue if the artist id exists
             if (result.data.response.artist) {
               //clear current artist then update
-              $('h2.currentArtist').empty().append('Current: ' + result.data.response.artist.name);
+              $('h2.currentArtist span').empty().append(result.data.response.artist.name);
               //get new artist if id does not exist
             }else{
               startArtist = Math.floor((Math.random() * 5000) + 1);
@@ -70,7 +70,7 @@ if (Meteor.isClient) {
             //continue if the artist id exists
             if (result.data.response.artist) {
               //clear current artist then update
-              $('h2.targetArtist').append('Target: ' + result.data.response.artist.name)
+              $('h2.targetArtist span').append(result.data.response.artist.name)
             }else{
               targetArtist = Math.floor((Math.random() * 5000) + 1);
               console.log('new target artist id: ' + targetArtist)
@@ -91,44 +91,61 @@ if (Meteor.isClient) {
         return numGenre
       };
       //http.get genre with number genre/list
-      function getGenreName () {
+      function getGenreName (callback) {
         HTTP.get('http://developer.echonest.com/api/v4/genre/list?api_key=X2VQTSJP3SIFYYMVT&format=json&results=500',
         {},
         function (error, result) {
           if (result.statusCode === 200) {
-            genreName = result.data.response.genres[numGenre].name;
-            console.log('The genre is: ' + genreName);
+            callback(result.data.response.genres[numGenre].name);
           }
-        return genreName
         });
       };
       //http.get 15 artists of genre genre/artists
       function getGenreArtists () {
-        console.log('genreName is: ' + genreName);
-        HTTP.get('http://developer.echonest.com/api/v4/genre/artists?api_key=X2VQTSJP3SIFYYMVT&format=json&results=15&name=' + genreName,
-        {},
-        function (error, result) {
-          if (result.statusCode === 200) {
-            console.log(result.data.response);
-            console.log(genreName);
-          }else {
-            console.log("something broke");
-            console.log(genreName);
-          }
+        getGenreName(function (name) {
+          genreName = name;
+          genreArtists = [];
+          HTTP.get('http://developer.echonest.com/api/v4/genre/artists?api_key=X2VQTSJP3SIFYYMVT&format=json&results=15&name=' + genreName,
+          {},
+          function (error, result) {
+            if (result.statusCode === 200) {
+              console.log('genre is: ' + genreName);
+              //push artists to array
+              for (var i = 0; i < result.data.response.artists.length; i++) {
+                genreArtists.push(result.data.response.artists[i].name)
+              }
+              console.log(genreArtists);
+              //select random artist from genreArtists array
+              var startArtist = genreArtists[Math.floor(Math.random()*genreArtists.length)];
+              var targetArtist = genreArtists[Math.floor(Math.random()*genreArtists.length)];
+              $('h2.currentArtist span').empty().append(startArtist);
+              $('h2.targetArtist span').append(targetArtist);
+              //invoke getSimilarArtists
+              (function getSimilarArtists () {
+                HTTP.get('http://developer.echonest.com/api/v4/artist/similar?api_key=X2VQTSJP3SIFYYMVT&name=' + startArtist + '&format=json&results=12&start=0',
+                  {},
+                  function (error, result) {
+                    if (result.statusCode === 200) {
+                      if (result.data.response.artists) {
+                        //clear the list
+                        $('ul.artists').empty();
+                        for (var i = 0; i < result.data.response.artists.length; i++) {
+                          //append artists to unordered list
+                          $('ul.artists').append('<li>' + result.data.response.artists[i].name + '</li>')
+                        }
+                      }
+                    }
+                  }
+                );
+              })();
+            }else {
+              console.log("something broke");
+            }
+          });
         });
       };
       getGenreNumber()
-      getGenreName()
       getGenreArtists()
-      //append artists to array
-      //generate random number between 0 and 15
-      //select startartist with number
-      //invoke getStartArtistName
-      //invoke getSimilarArtists
-      //populate ul
-      //generate random number between 0 and 15
-      //select targetartist with number
-      //invoke getTargetArtistName
       //$('h2.start').hide()
     },
 
@@ -170,8 +187,9 @@ if (Meteor.isClient) {
           }
         }
       );
-      $('h2.currentArtist').empty().append('Current: ' + nextArtist);
-      var currentArtist = $('h2.currentArtist').html();
+      $('h2.currentArtist span').empty().append(nextArtist);
+      var currentArtist = $('h2.currentArtist span').html();
+      var targetArtist = $('h2.targetArtist span').html();
       if (currentArtist == targetArtist) {
         alert("ZOMG YOU WIN!!!")
       }
