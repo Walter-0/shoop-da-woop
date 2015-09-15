@@ -5,19 +5,19 @@ if (Meteor.isClient) {
   });
 
   Template.hello.events({
-    'click h2.start': function () {
+    'click h2.start3': function () {
       //  when h2 is clicked
 
       //randomize start artist
       (function getStartArtist () {
-        startArtist = Math.floor((Math.random() * 500) + 1);
+        startArtist = Math.floor((Math.random() * 5000) + 1);
         console.log('start artist id: ' + startArtist);
         return startArtist;
       })();
 
       (function getTargetArtist () {
         //randomize target artist
-        targetArtist = Math.floor((Math.random() * 500) + 1);
+        targetArtist = Math.floor((Math.random() * 5000) + 1);
         console.log('target artist id: ' + targetArtist);
       })();
 
@@ -34,13 +34,31 @@ if (Meteor.isClient) {
               $('h2.currentArtist').empty().append('Current: ' + result.data.response.artist.name);
               //get new artist if id does not exist
             }else{
-              startArtist = Math.floor((Math.random() * 500) + 1);
-              console.log('new start artist id: ' + startArtist);
+              startArtist = Math.floor((Math.random() * 5000) + 1);
+              console.log('new start artist id: ' + startArtist)
               getStartArtistName();
-              //startArtist = Math.floor((Math.random() * 500) + 1);
             }
           }
         });
+        //get request for similar artists
+        (function getSimilarArtists () {
+          HTTP.get('http://developer.echonest.com/api/v4/artist/similar?api_key=X2VQTSJP3SIFYYMVT&id=7digital-US:artist:' + startArtist + '&format=json&results=12&start=0',
+            {},
+            function (error, result) {
+              if (result.statusCode === 200) {
+                if (result.data.response.artists) {
+                  //clear the list
+                  $('ul.artists').empty();
+                  for (var i = 0; i < result.data.response.artists.length; i++) {
+                    //append artists to unordered list
+                    $('ul.artists').append('<li>' + result.data.response.artists[i].name + '</li>')
+                  }
+                }
+              }
+            }
+          );
+        })();
+
       })();
 
       //get request for target artist
@@ -54,32 +72,84 @@ if (Meteor.isClient) {
               //clear current artist then update
               $('h2.targetArtist').append('Target: ' + result.data.response.artist.name)
             }else{
-              targetArtist = Math.floor((Math.random() * 500) + 1);
-              console.log('new target artist id: ' + targetArtist);
+              targetArtist = Math.floor((Math.random() * 5000) + 1);
+              console.log('new target artist id: ' + targetArtist)
               getTargetArtistName();
             }
           }
         });
       })();
-
-      //get request for similar artists
-      (function getSimilarArtists () {
-        HTTP.get('http://developer.echonest.com/api/v4/artist/similar?api_key=X2VQTSJP3SIFYYMVT&id=7digital-US:artist:' + startArtist + '&format=json&results=12&start=0',
-          {},
-          function (error, result) {
-            if (result.statusCode === 200) {
-              if (result.data.response.artists) {
-                //clear the list
-                $('ul.artists').empty();
-                for (var i = 0; i < result.data.response.artists.length; i++) {
-                  //append artists to unordered list
-                  $('ul.artists').append('<li>' + result.data.response.artists[i].name + '</li>')
-                }
-              }
-            }
+      $('h2.start').hide()
+    },
+    //start level 1
+    'click h2.start1': function () {
+      var genreName;
+      //generate random number
+      function getGenreNumber () {
+        numGenre = Math.floor((Math.random() * 500) + 1); //total genres: 1381
+        console.log('genre index number: ' + numGenre);
+        return numGenre
+      };
+      //http.get genre with number genre/list
+      function getGenreName () {
+        HTTP.get('http://developer.echonest.com/api/v4/genre/list?api_key=X2VQTSJP3SIFYYMVT&format=json&results=500',
+        {},
+        function (error, result) {
+          if (result.statusCode === 200) {
+            genreName = result.data.response.genres[numGenre].name;
+            console.log('The genre is: ' + genreName);
           }
-        );
-      })();
+        return genreName
+        });
+      };
+      //http.get 15 artists of genre genre/artists
+      function getGenreArtists () {
+        console.log('genreName is: ' + genreName);
+        HTTP.get('http://developer.echonest.com/api/v4/genre/artists?api_key=X2VQTSJP3SIFYYMVT&format=json&results=15&name=' + genreName,
+        {},
+        function (error, result) {
+          if (result.statusCode === 200) {
+            console.log(result.data.response);
+            console.log(genreName);
+          }else {
+            console.log("something broke");
+            console.log(genreName);
+          }
+        });
+      };
+      getGenreNumber()
+      getGenreName()
+      getGenreArtists()
+      //append artists to array
+      //generate random number between 0 and 15
+      //select startartist with number
+      //invoke getStartArtistName
+      //invoke getSimilarArtists
+      //populate ul
+      //generate random number between 0 and 15
+      //select targetartist with number
+      //invoke getTargetArtistName
+      //$('h2.start').hide()
+    },
+
+    'click h2.start2': function () {
+      //generate random number
+      //http.get genre with number genre/list
+      //http.get 15 artists of genre genre/artist
+      //append artists to array
+      //generate random number between 0 and 15
+      //select startartist with number
+      //invoke getSimilarArtists
+      //populate ul
+
+      //THEN for the similar genre
+
+      //http.get similar genres with same number genre/similar
+      //http.get 15 artists of genre genre/artist
+      //append artists to array
+      //generate random number between 0 and 15
+      //select targetartist with number
+
       $('h2.start').hide()
     },
     'click li': function (event) {
@@ -100,10 +170,8 @@ if (Meteor.isClient) {
           }
         }
       );
-      $('h2.currentArtist').empty().append(nextArtist);
+      $('h2.currentArtist').empty().append('Current: ' + nextArtist);
       var currentArtist = $('h2.currentArtist').html();
-      console.log('current artist is: ' + currentArtist);
-      console.log('target artist is: ' + targetArtist);
       if (currentArtist == targetArtist) {
         alert("ZOMG YOU WIN!!!")
       }
