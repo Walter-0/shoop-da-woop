@@ -46,6 +46,10 @@ Template.hello.events({
             //select random artist from genreArtists array
             var startArtist = genreArtists[Math.floor(Math.random()*genreArtists.length)];
             var targetArtist = genreArtists[Math.floor(Math.random()*genreArtists.length)];
+            if (startArtist == targetArtist) {
+              console.log('the artists were randomized again');
+              getGenreArtists();
+            }
             $('.currentArtist span').empty().append(startArtist);
             $('.targetArtist span').empty().append(targetArtist);
             $('h2.genre1 span').empty().append(genreName);
