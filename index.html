@@ -4,39 +4,77 @@
 
 <body>
   <div class='container'>
-    <h1>The Spotify Game</h1>
-    {{> currentplayer}}
-    {{> addPlayerForm}}
-    {{> winnerboard}}
-    {{> hello}}
+
+    <div class='sidebar'>
+      <h1 class='title'>The Spotify Game</h1>
+      <h2 class='subtitle'>Explore & Race Through Spotify Artists</h2>
+      <p class='rules'>
+        Hello music lover, time to test your music knowledge! Get to the target artist by selecting from the artists related to the current selection.
+      </p>
+      <h2>{{> currentplayer}}</h2>
+      {{> addPlayerForm}}
+      <h3><strong>Select your name before starting a game to save your scores</strong></h3>
+      <h2>Winnerboard</h2>
+      <div class='winnerboard'>
+        {{ > winnerboard}}
+      </div>
+    </div>
+
+    <div class="main">
+      {{> hello}}
+    </div>
 
   </div>
 </body>
 
 <template name='currentplayer'>
   {{#if showSelectedPlayer}}
-    <h2>Current Player: {{showSelectedPlayer.name}}</h2>
+    Current Player: {{showSelectedPlayer.name}}
   {{/if}}
 </template>
 
 <template name='hello'>
-  <h2 class='start start1'>Level 1 <small>Navigate between artists of the same genre</small></h2>
-  <h2 class='start start2'>Level 2 <small>Navigate between artists of similar genres</small></h2>
-  <h2 class='start start3'>( ͡° ͜ʖ ͡°) <small>Navigate between completely random artists</small></h2>
-  <h2 class='genre1'>Starting Genre: <span></span></h2>
-  <h2 class='genre2'>Target Genre: <span></span></h2>
-  <div class='currentArtist'>Current Artist: <span></span> </div>
-  <div class='targetArtist'>Target Artist: <span></span></div>
-  <ul class='artists'></ul>
+  <div class='levels'>
+    <h2 class='start start1'>Level 1 <small>Same Genre</small></h2>
+
+    <h2 class='start start2'>Level 2 <small>Similar Genres</small></h2>
+
+    <h2 class='start start3'>( ͡° ͜ʖ ͡°) <small>Completely Random</small></h2>
+  </div>
+  <div class='hideinterface interface'>
+    <div class='artistContainer'>
+      <h2 class='targetArtist'>Target Artist<br> <span></span></h2>
+      <h2 class='currentArtist'>Current Artist<br> <span></span> </h2>
+    </div>
+    <div class='genreContainer'>
+      <h2 class='genre2'>Target Genre<br> <span></span></h2>
+      <h2 class='genre1'>Starting Genre<br> <span></span></h2>
+    </div>
+  </div>
+  <div class='listContainer'>
+    <ul class='artists'></ul>
+  </div>
 
 </template>
 
 <template name='winnerboard'>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Level 1</th>
+      <th>Level 2</th>
+      <th>Level 3</th>
+    </tr>
   {{#each player}}
-    <li class='player {{selectedClass}}'>
-      {{name}}: Level 1: <span class='level1wins'>{{level1}}</span> ---- Level 2: <span class='level2wins'>{{level2}}</span> ---- Level 3: <span class='level3wins'>{{level3}}</span>
-    </li>
+    <tr class='player {{selectedClass}}'>
+      <td id='name'>{{name}}</td>
+      <td>{{level1}}</td>
+      <td>{{level2}}</td>
+      <td>{{level3}}</td>
+    </tr>
   {{/each}}
+  </table>
+
   <input type="button" class="remove" value="Remove Player">
 </template>
 

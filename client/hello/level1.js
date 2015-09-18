@@ -1,12 +1,18 @@
 Template.hello.events({
+
+  'click h2.start':function () {
+    $('.interface').removeClass('hideinterface')
+  },
+
   //start level 1
+
   'click h2.start1': function () {
     if (true) {
 
     }
     currentLevel = 1;
     $('.genre1').show();
-    $('.genre2').hide();
+    $('.genre2').show();
 
     var genreName;
     //generate random number
@@ -43,6 +49,7 @@ Template.hello.events({
             $('.currentArtist span').empty().append(startArtist);
             $('.targetArtist span').empty().append(targetArtist);
             $('h2.genre1 span').empty().append(genreName);
+            $('h2.genre2 span').empty().append(genreName);
             //invoke getSimilarArtists
             (function getSimilarArtists () {
               HTTP.get('http://developer.echonest.com/api/v4/artist/similar?api_key=X2VQTSJP3SIFYYMVT&name=' + startArtist + '&format=json&results=12&start=0',

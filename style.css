@@ -1,3 +1,142 @@
+body{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  background-color: red;
+}
+
+.container{
+  display: flex;
+}
+
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  text-align: center;
+  background-color: #213A16;
+  height: 100vh;
+  width: 25%;
+  padding: 0 .5em;
+}
+
+.title{
+  padding-top: .5em;
+  font-size: 2.7em;
+  color: #C2D3BB;
+}
+
+.subtitle{
+  color: #C2D3BB;
+}
+
+.rules{
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+.winnerboard{
+  border: 1px solid black;
+  text-align: center;
+}
+
+table{
+  width: 100%;
+}
+
+tr, td{
+  border: 1px solid black;
+}
+
+#name:hover{
+  border: 3px solid black;
+}
+
+input{
+  font-size: 1em;
+}
+
+
+.main{
+  display: block;
+  background-color: #728E66;
+  width: 75%;
+  padding: 1em;
+  color: #213A16;
+}
+
+.levels{
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+  margin-top: 1em;
+}
+
+.start{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 15px;
+  margin: auto .4em;
+  width: 20em;
+}
+
+.start:hover{
+  background-color: #E6CCD1;
+}
+
+.interface{
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.targetArtist,
+.currentArtist,
+.genre1,
+.genre2{
+  border: 1px solid black;
+  border-radius: 15px;
+  margin-right: 4em;
+  margin-left: 4em;
+  padding: .5em;
+}
+
+.interface span{
+  color: #5C2C35;
+}
+
+.hideinterface{
+  display: none;
+}
+
+.artists{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-between;
+  align-items: center;
+}
+
+.artists li{
+  list-style-type: none;
+  display: block;
+  margin: 1em 3em;
+  border: 1px solid black;
+  border-radius: 15px;
+  text-align: center;
+  padding: .4em;
+}
+
+.artists li:hover{
+  color: #E6CCD1;
+}
+
+
 .selected{
   font-weight: bold;
 }
