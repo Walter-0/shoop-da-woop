@@ -1,7 +1,7 @@
 # The Spotify Game
-The Next Great Time-Waster
+## The Next Great Time-Waster
 
-http://the_spotify_game.meteor.com/
+## [Play Now](http://the_spotify_game.meteor.com/)
 
 ![The Game](/screenshots/screenshot.png?raw=true)
 
