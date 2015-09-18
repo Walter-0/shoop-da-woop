@@ -9,13 +9,13 @@ Template.hello.events({
 
     //generate random number
     function getGenre1Number () {
-      numGenre1 = Math.floor((Math.random() * 500) + 1); //total genres: 1381
+      numGenre1 = Math.floor((Math.random() * 1381) + 1); //total genres: 1381
       return numGenre1
     };
 
     //http.get genre1 with number genre/list
     function getGenre1Name (callback) {
-      HTTP.get('http://developer.echonest.com/api/v4/genre/list?api_key=X2VQTSJP3SIFYYMVT&format=json&results=500',
+      HTTP.get('http://developer.echonest.com/api/v4/genre/list?api_key=X2VQTSJP3SIFYYMVT&format=json&results=1381',
       {},
       function (error, result) {
         if (result.statusCode === 200) {

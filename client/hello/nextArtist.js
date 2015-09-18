@@ -25,7 +25,7 @@ Template.hello.events({
     //replace current artist with next artist clicked
     $('.currentArtist span').empty().append(nextArtist);
     if (nextArtist == targetArtist) {
-      alert("ZOMG YOU WON!!!")
+      $('.flashWin').show();
       if (currentLevel == 1) { //level 1
         var selectedPlayer = Session.get('selectedPlayer');
         PlayersList.update(selectedPlayer, {$inc: {level1: 1} });

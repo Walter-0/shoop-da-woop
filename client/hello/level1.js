@@ -2,14 +2,14 @@ Template.hello.events({
 
   'click h2.start':function () {
     $('.interface').removeClass('hideinterface')
+    $('.flashWin').hide();
+
   },
 
   //start level 1
 
   'click h2.start1': function () {
-    if (true) {
 
-    }
     currentLevel = 1;
     $('.genre1').show();
     $('.genre2').show();

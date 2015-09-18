@@ -9,13 +9,13 @@ Template.hello.events({
     $('.genre2').hide();
     //randomize start artist
     function getStartArtist () {
-      startArtist = Math.floor((Math.random() * 5000) + 1);
+      startArtist = Math.floor((Math.random() * 7000) + 1);
       return startArtist;
     };
 
     function getTargetArtist () {
       //randomize target artist
-      targetArtist = Math.floor((Math.random() * 5000) + 1);
+      targetArtist = Math.floor((Math.random() * 7000) + 1);
     };
 
 
@@ -99,7 +99,7 @@ Template.hello.events({
             //clear current artist then update
             $('.targetArtist span').empty().append(result.data.response.artist.name)
           }else{
-            targetArtist = Math.floor((Math.random() * 5000) + 1);
+            targetArtist = Math.floor((Math.random() * 7000) + 1);
             getTargetArtistName();
           }
         }

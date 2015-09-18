@@ -1,10 +1,12 @@
 body{
   width: 100vw;
   margin: 0;
+  height: 100%;
 }
 
 .container{
   display: flex;
+  height: 100%;
 }
 
 .sidebar{
@@ -13,7 +15,7 @@ body{
   flex-wrap: nowrap;
   text-align: center;
   background-color: #213A16;
-  width: 25%;
+  width: 30%;
   padding: 0 .5em;
 }
 
@@ -65,7 +67,7 @@ input{
 .main{
   display: block;
   background-color: #728E66;
-  width: 75%;
+  width: 70%;
   padding: 1em;
   color: #213A16;
 }
@@ -97,6 +99,11 @@ input{
   align-content: space-around;
   align-items: center;
   justify-content: center;
+  text-align: center;
+}
+
+.flashWin{
+  display: none;
   text-align: center;
 }
 
