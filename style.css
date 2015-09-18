@@ -7,6 +7,7 @@ body{
 .container{
   display: flex;
   height: 100%;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .sidebar{
@@ -15,13 +16,13 @@ body{
   flex-wrap: nowrap;
   text-align: center;
   background-color: #213A16;
+  color: #C2D3BB;
   width: 30%;
   padding: 0 .5em;
 }
 
 .title{
-  padding-top: .5em;
-  font-size: 2.7em;
+  font-size: 3em;
   color: #C2D3BB;
 }
 
@@ -30,17 +31,19 @@ body{
 }
 
 .rules{
-  line-height: 1.5em;
+  line-height: 1.8em;
   text-align: justify;
-  font-size: 1.15em;
+  font-size: .8em;
   color: #9B6F77;
   padding: .2em;
   border: 3px solid black;
 }
 
+
 h3 strong:hover{
   text-decoration: underline;
 }
+
 
 .winnerboard{
   border: 1px solid black;
@@ -83,7 +86,7 @@ input{
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 15px;
   margin: auto .4em;
   width: 20em;
@@ -111,10 +114,11 @@ input{
 .currentArtist,
 .genre1,
 .genre2{
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 15px;
-  margin-right: 4em;
-  margin-left: 4em;
+  width: 15em;
+  margin-right: 2em;
+  margin-left: 2em;
   padding: .5em;
 }
 
@@ -137,10 +141,11 @@ input{
 .artists li{
   list-style-type: none;
   display: block;
-  margin: 1em 3em;
-  border: 1px solid black;
+  margin: 1em 2em;
+  border: 2px solid black;
   border-radius: 15px;
   text-align: center;
+  font-size: 1.1em;
   padding: .4em;
 }
 
