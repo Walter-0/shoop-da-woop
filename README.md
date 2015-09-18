@@ -6,9 +6,10 @@ http://the_spotify_game.meteor.com/
 ![The Game](/screenshots/screenshot.png?raw=true)
 
 ## Technologies Used
-- MeteorJS, a relatively new full-stack javascript framework.
-- MongoDB, which is fully integrated into Meteor.
-- The Echo Nest API, for artist and genre data.
+- [MeteorJS](https://www.meteor.com/): a relatively new, complete open source platform
+for building web and mobile apps in pure JavaScript.
+- [MongoDB](https://www.mongodb.org/): a free, open-source NoSQL database which is fully integrated into Meteor.
+- [The Echo Nest API](http://developer.echonest.com/): offers an incredible array of music data and services for developers to build amazing apps and experiences. 
 
 
 ## Installation
@@ -19,6 +20,10 @@ http://the_spotify_game.meteor.com/
 
 
 ## User Stories
+- As a user, I should be able to log in and save my scores, so that I can return to the same progress.
+- As a user, I should be able to choose a level of difficulty, so I can feel comfortable with my current music knowledge.
+- As a user, I should be able to click on related artists in order to reach the target artist.
+- As a user, I should be able to have a similar experience on devices of all sizes, so that I can play the game on all my devices.
 
 
 ## Unsolved Problems
