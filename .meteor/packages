@@ -8,3 +8,6 @@ meteor-platform
 autopublish
 insecure
 http
+accounts-ui
+accounts-password
+npm-bcrypt

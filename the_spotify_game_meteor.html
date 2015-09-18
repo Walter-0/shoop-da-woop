@@ -3,19 +3,48 @@
 </head>
 
 <body>
-  <h1>The Spotify Game</h1>
-  {{> hello}}
+  <div class='container'>
+    <h1>The Spotify Game</h1>
+    {{> currentplayer}}
+    {{> addPlayerForm}}
+    {{> winnerboard}}
+    {{> hello}}
+
+  </div>
 </body>
+
+<template name='currentplayer'>
+  {{#if showSelectedPlayer}}
+    <h2>Current Player: {{showSelectedPlayer.name}}</h2>
+  {{/if}}
+</template>
 
 <template name='hello'>
   <h2 class='start start1'>Level 1 <small>Navigate between artists of the same genre</small></h2>
   <h2 class='start start2'>Level 2 <small>Navigate between artists of similar genres</small></h2>
-  <h2 class='start start3'>Level 3 <small>Navigate between completely random artists</small></h2>
+  <h2 class='start start3'>( ͡° ͜ʖ ͡°) <small>Navigate between completely random artists</small></h2>
   <h2 class='genre1'>Starting Genre: <span></span></h2>
   <h2 class='genre2'>Target Genre: <span></span></h2>
-  <h2 class='currentArtist'>Current Artist: <span></span></h2>
-  <h2 class='targetArtist'>Target Artist: <span></span></h2>
-  <ul class='artists'>
+  <div class='currentArtist'>Current Artist: <span></span> <img id='currentImage' src='' alt='an image goes here'></div>
+  <div class='targetArtist'>Target Artist: <span></span><img id='targetImage' src='' alt='an image goes here'></div>
+  <ul class='artists'></ul>
+</template>
 
-  </ul>
+<template name='winnerboard'>
+  {{#each player}}
+    <li class='player {{selectedClass}}'>
+      {{name}}: Level 1: <span class='level1wins'>{{level1}}</span> ---- Level 2: <span class='level2wins'>{{level2}}</span> ---- Level 3: <span class='level3wins'>{{level3}}</span>
+    </li>
+  {{/each}}
+  <input type="button" class="increment1" value="Give a point for level 1">
+  <input type="button" class="increment2" value="Give a point for level 2">
+  <input type="button" class="increment3" value="Give a point for level 3">
+  <input type="button" class="remove" value="Remove Player">
+</template>
+
+<template name="addPlayerForm">
+  <form>
+    <input type="text" name="playerName">
+    <input type="submit" value="Add Player">
+  </form>
 </template>
