@@ -1,8 +1,6 @@
 body{
   width: 100vw;
-  height: 100vh;
   margin: 0;
-  background-color: red;
 }
 
 .container{
@@ -15,7 +13,6 @@ body{
   flex-wrap: nowrap;
   text-align: center;
   background-color: #213A16;
-  height: 100vh;
   width: 25%;
   padding: 0 .5em;
 }
@@ -33,6 +30,14 @@ body{
 .rules{
   line-height: 1.5em;
   text-align: justify;
+  font-size: 1.15em;
+  color: #9B6F77;
+  padding: .2em;
+  border: 3px solid black;
+}
+
+h3 strong:hover{
+  text-decoration: underline;
 }
 
 .winnerboard{
