@@ -1,27 +1,22 @@
-Template.hello.helpers({
-  'level1win': function () {
-    var selectedPlayer = Session.get('selectedPlayer');
-    PlayersList.update(selectedPlayer, {$inc: {level1: 1} });
-  }
-
-});
-
 Template.hello.events({
   //start level 1
   'click h2.start1': function () {
+    if (true) {
+
+    }
+    currentLevel = 1;
     $('.genre1').show();
     $('.genre2').hide();
 
     var genreName;
     //generate random number
     function getGenreNumber () {
-      numGenre = Math.floor((Math.random() * 500) + 1); //total genres: 1381
-      console.log('genre index number: ' + numGenre);
+      numGenre = Math.floor((Math.random() * 1381) + 1); //total genres: 1381
       return numGenre
     };
     //http.get genre with number genre/list
     function getGenreName (callback) {
-      HTTP.get('http://developer.echonest.com/api/v4/genre/list?api_key=X2VQTSJP3SIFYYMVT&format=json&results=500',
+      HTTP.get('http://developer.echonest.com/api/v4/genre/list?api_key=X2VQTSJP3SIFYYMVT&format=json&results=1381',
       {},
       function (error, result) {
         if (result.statusCode === 200) {
@@ -42,12 +37,11 @@ Template.hello.events({
             for (var i = 0; i < result.data.response.artists.length; i++) {
               genreArtists.push(result.data.response.artists[i].name)
             }
-            console.log(genreArtists);
             //select random artist from genreArtists array
             var startArtist = genreArtists[Math.floor(Math.random()*genreArtists.length)];
             var targetArtist = genreArtists[Math.floor(Math.random()*genreArtists.length)];
             $('.currentArtist span').empty().append(startArtist);
-            $('.currentArtist span').empty().append(targetArtist);
+            $('.targetArtist span').empty().append(targetArtist);
             $('h2.genre1 span').empty().append(genreName);
             //invoke getSimilarArtists
             (function getSimilarArtists () {

@@ -2,6 +2,10 @@ Template.hello.events({
 
   'click li': function (event) {
     event.preventDefault();
+
+    var currentArtist = $('.currentArtist span').html();
+    var targetArtist = $('.targetArtist span').html();
+
     ///get the text of the clicked artist
     nextArtist = $(event.target).text();
 
@@ -18,11 +22,20 @@ Template.hello.events({
         }
       }
     );
+    //replace current artist with next artist clicked
     $('.currentArtist span').empty().append(nextArtist);
-    var currentArtist = $('.currentArtist span').html();
-    var targetArtist = $('.currentArtist span').html();
-    if (currentArtist == targetArtist) {
+    if (nextArtist == targetArtist) {
       alert("ZOMG YOU WON!!!")
+      if (currentLevel == 1) { //level 1
+        var selectedPlayer = Session.get('selectedPlayer');
+        PlayersList.update(selectedPlayer, {$inc: {level1: 1} });
+      }else if (currentLevel == 2) { //level 2
+        var selectedPlayer = Session.get('selectedPlayer');
+        PlayersList.update(selectedPlayer, {$inc: {level2: 1} });
+      }else if (currentLevel == 3) { //level 3
+        var selectedPlayer = Session.get('selectedPlayer');
+        PlayersList.update(selectedPlayer, {$inc: {level3: 1} });
+      }
     }
   }
 

@@ -1,4 +1,7 @@
 PlayersList = new Mongo.Collection('players');
+currentLevel = 0;
+
+
 
 if (Meteor.isServer) {
   Meteor.startup(function () {

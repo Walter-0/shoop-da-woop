@@ -1,7 +1,8 @@
 Template.hello.events({
+  //start level 3
   'click h2.start3': function () {
-    var startArtist = null;
-    //  when h2 is clicked
+    currentLevel = 3;
+    var startArtist;
 
     //hide the genres
     $('.genre1').hide();
@@ -38,20 +39,36 @@ Template.hello.events({
     };
 
     //get request for start artist image
-    function getStartArtistImage () {
-      HTTP.get('http://developer.echonest.com/api/v4/artist/images?api_key=X2VQTSJP3SIFYYMVT&id=7digital-US:artist:' + startArtist + '&format=json&results=1',
-      {},
-      function (error, result) {
-        if (result.statusCode === 200) {
-          if(result.data.response.images){
-            var currentImageUrl = result.data.response.images[0].url;
-            $('#currentImage').attr('src', currentImageUrl)
-          }else{
-            getStartArtistImage();
-          }
-        }
-      })
-    };
+    //Image URLs are unreliable. Will continue to search for solutions
+    // function getStartArtistImage () {
+    //   HTTP.get('http://developer.echonest.com/api/v4/artist/images?api_key=X2VQTSJP3SIFYYMVT&id=7digital-US:artist:' + startArtist + '&format=json&results=1',
+    //   {},
+    //   function (error, result) {
+    //     if (result.statusCode === 200) {
+    //       if(result.data.response.images){ //check if artist has an image file
+    //         var currentImageUrl = result.data.response.images[0].url;
+    //         //check if image URL is good
+    //           function checkImage(src) {
+    //             var img = new Image();
+    //             img.onload = function() {
+    //               // code to set the src on success
+    //               $('#currentImage').attr('src', src)
+    //             };
+    //             img.onerror = function() {
+    //               // doesn't exist or error loading
+    //               $('#currentImage').attr('alt', 'No Image')
+    //
+    //             };
+    //             img.src = src; // fires off loading of image
+    //           }
+    //           checkImage(currentImageUrl);
+    //       }else{
+    //         getStartArtistImage();
+    //       }
+    //     }
+    //   })
+    // };
+
 
     //get request for similar artists
     function getSimilarArtists () {
@@ -60,12 +77,11 @@ Template.hello.events({
         function (error, result) {
           if (result.statusCode === 200) {
             if (result.data.response.artists) {
-              //clear the list
               $('ul.artists').empty();
               for (var i = 0; i < result.data.response.artists.length; i++) {
                 //append artists to unordered list
-                $('ul.artists').append('<li>' + result.data.response.artists[i].name + '</li>')
-              }
+                $('ul.artists').append('<li>' + result.data.response.artists[i].name + '</li>');
+              };
             }
           }
         }
@@ -81,7 +97,7 @@ Template.hello.events({
           //continue if the artist id exists
           if (result.data.response.artist) {
             //clear current artist then update
-            $('.currentArtist span').empty().append(result.data.response.artist.name)
+            $('.targetArtist span').empty().append(result.data.response.artist.name)
           }else{
             targetArtist = Math.floor((Math.random() * 5000) + 1);
             getTargetArtistName();
@@ -90,8 +106,9 @@ Template.hello.events({
       });
     };
     getStartArtist();
+    getTargetArtist();
     getStartArtistName();
-    getStartArtistImage();
-
+    getSimilarArtists();
+    getTargetArtistName();
   }
 });

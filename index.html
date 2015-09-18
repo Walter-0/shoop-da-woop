@@ -25,9 +25,10 @@
   <h2 class='start start3'>( ͡° ͜ʖ ͡°) <small>Navigate between completely random artists</small></h2>
   <h2 class='genre1'>Starting Genre: <span></span></h2>
   <h2 class='genre2'>Target Genre: <span></span></h2>
-  <div class='currentArtist'>Current Artist: <span></span> <img id='currentImage' src='' alt='an image goes here'></div>
-  <div class='targetArtist'>Target Artist: <span></span><img id='targetImage' src='' alt='an image goes here'></div>
+  <div class='currentArtist'>Current Artist: <span></span> </div>
+  <div class='targetArtist'>Target Artist: <span></span></div>
   <ul class='artists'></ul>
+
 </template>
 
 <template name='winnerboard'>
@@ -36,9 +37,6 @@
       {{name}}: Level 1: <span class='level1wins'>{{level1}}</span> ---- Level 2: <span class='level2wins'>{{level2}}</span> ---- Level 3: <span class='level3wins'>{{level3}}</span>
     </li>
   {{/each}}
-  <input type="button" class="increment1" value="Give a point for level 1">
-  <input type="button" class="increment2" value="Give a point for level 2">
-  <input type="button" class="increment3" value="Give a point for level 3">
   <input type="button" class="remove" value="Remove Player">
 </template>
 

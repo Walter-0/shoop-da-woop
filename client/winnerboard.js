@@ -17,15 +17,7 @@ Template.winnerboard.events({
     Session.set('selectedPlayer', playerId);
     // var selectedPlayer = Session.get('selectedPlayer');
   },
-  'click .increment2': function(){
-    var selectedPlayer = Session.get('selectedPlayer');
-    PlayersList.update(selectedPlayer, {$inc: {level2: 1} });
-  },
-  'click .increment3': function(){
-    var selectedPlayer = Session.get('selectedPlayer');
-    PlayersList.update(selectedPlayer, {$inc: {level3: 1} });
-  },
-  'click .remove': function(){
+    'click .remove': function(){
     var selectedPlayer = Session.get('selectedPlayer');
     PlayersList.remove(selectedPlayer);
   }

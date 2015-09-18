@@ -1,6 +1,7 @@
 Template.hello.events({
   //start level 2
   'click h2.start2': function () {
+    currentLevel = 2;
     var genre1Name;
     var genre2Name;
     $('.genre1').show();
@@ -11,6 +12,7 @@ Template.hello.events({
       numGenre1 = Math.floor((Math.random() * 500) + 1); //total genres: 1381
       return numGenre1
     };
+
     //http.get genre1 with number genre/list
     function getGenre1Name (callback) {
       HTTP.get('http://developer.echonest.com/api/v4/genre/list?api_key=X2VQTSJP3SIFYYMVT&format=json&results=500',
@@ -21,6 +23,7 @@ Template.hello.events({
         }
       });
     };
+
     //http.get 15 artists of genre1
     function getGenre1Artists () {
       getGenre1Name(function (name) {
@@ -104,7 +107,7 @@ Template.hello.events({
               //select random artist from genre2Artists array
               var targetArtist = genre2Artists[Math.floor(Math.random()*genre2Artists.length)];
               //append targetArtist to html
-              $('.currentArtist span').empty().append(targetArtist);
+              $('.targetArtist span').empty().append(targetArtist);
               $('h2.genre2 span').empty().append(genre2Name);
             }else {
               console.log("something broke");
