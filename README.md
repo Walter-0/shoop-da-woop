@@ -1,9 +1,23 @@
-# The Spotify Game
+# The Spoti Game
 ## The Next Great Time-Waster
 
 ## [Play Now](http://the_spotify_game.meteor.com/)
 
 ![The Game](/screenshots/screenshot.png?raw=true)
+
+
+## What Is It?
+The Spoti Game is an explorational game designed to test your music knowledge and discover new music. Users must click their way to a target artist by using the related artists as stepping stones.
+
+## Example path between Taylor Swift and Deadmau5
+- Taylor Swift
+- Miley Cyrus
+- Justin Beiber
+- Jason Derulo
+- Flo Rida
+- David Guetta
+- Swedish House Mafia
+- Deadmau5
 
 ## Technologies Used
 - [MeteorJS](https://www.meteor.com/): a relatively new, complete open source platform
