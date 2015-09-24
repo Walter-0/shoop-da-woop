@@ -3,8 +3,8 @@ Template.hello.events({
   'click li': function (event) {
     event.preventDefault();
 
-    var currentArtist = $('.currentArtist span').html();
-    var targetArtist = $('.targetArtist span').html();
+    var currentArtist = $('#currentArtist span').html();
+    var targetArtist = $('#targetArtist span').html();
 
     ///get the text of the clicked artist
     nextArtist = $(event.target).text();
@@ -23,7 +23,7 @@ Template.hello.events({
       }
     );
     //replace current artist with next artist clicked
-    $('.currentArtist span').empty().append(nextArtist);
+    $('#currentArtist span').empty().append(nextArtist);
     if (nextArtist == targetArtist) {
       $('.flashWin').show();
       if (currentLevel == 1) { //level 1

@@ -28,7 +28,7 @@ Template.hello.events({
           //continue if the artist id exists
           if (result.data.response.artist) {
             //clear current artist then update
-            $('.currentArtist span').empty().append(result.data.response.artist.name);
+            $('#currentArtist span').empty().append(result.data.response.artist.name);
             //get new artist if id does not exist
           }else{
             startArtist = Math.floor((Math.random() * 5000) + 1);

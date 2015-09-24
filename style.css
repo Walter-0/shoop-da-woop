@@ -105,21 +105,19 @@ input{
   text-align: center;
 }
 
-.flashWin{
-  display: none;
-  text-align: center;
-}
-
-.targetArtist,
-.currentArtist,
-.genre1,
-.genre2{
-  border: 2px solid black;
+.interface h2{
   border-radius: 15px;
   width: 15em;
-  margin-right: 2em;
-  margin-left: 2em;
+  margin: 0;
   padding: .5em;
+}
+
+.artistContainer h2{
+  border-right: 2px solid black;
+}
+
+.genreContainer h2{
+  border: 2px solid black;
 }
 
 .interface span{
@@ -129,6 +127,28 @@ input{
 .hideinterface{
   display: none;
 }
+
+.interface img {
+  border-radius: 15px;
+  width: 15em;
+  height: 15em;
+}
+
+.flashWin{
+  display: none;
+  text-align: center;
+}
+
+.targetArtistContainer,
+.currentArtistContainer{
+  display: flex;
+  flex-direction: row;
+  border: 2px solid black;
+  border-radius: 15px;
+  width: 30em;
+}
+
+
 
 .artists{
   display: flex;

@@ -39,7 +39,7 @@ Template.hello.events({
             }
             //select random artist from genre1Artists array
             var startArtist = genre1Artists[Math.floor(Math.random()*genre1Artists.length)];
-            $('.currentArtist span').empty().append(startArtist);
+            $('#currentArtist span').empty().append(startArtist);
             $('h2.genre1 span').empty().append(genre1Name);
             //invoke getSimilarArtists
             (function getSimilarArtists () {

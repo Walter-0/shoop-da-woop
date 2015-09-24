@@ -50,13 +50,39 @@ Template.hello.events({
               console.log('the artists were randomized again');
               getGenreArtists();
             }
-            $('.currentArtist span').empty().append(startArtist);
-            $('.targetArtist span').empty().append(targetArtist);
-            $('h2.genre1 span').empty().append(genreName);
-            $('h2.genre2 span').empty().append(genreName);
+            $('#currentArtist span').empty().append(startArtist);
+            $('#targetArtist span').empty().append(targetArtist);
+            $('#genre1 span').empty().append(genreName);
+            $('#genre2 span').empty().append(genreName);
+
+            function getArtistImages(artistName) {
+              HTTP.get('https://api.spotify.com/v1/search?q=' + artistName + '&type=artist&limit=1',
+              {},
+              function (error, result) {
+                if (result.statusCode === 200) {
+                  var artistImageUrl = result.data.artists.items[0].images[0].url
+                  if (artistImageUrl) {
+                    if (artistName == startArtist) {
+                      //set the startArtistImage url on the html
+                      $('#currentArtistImage').attr('src', artistImageUrl);
+                      console.log('start artist image url is ' + artistImageUrl);
+                    }else if (artistName == targetArtist) {
+                      //set the targetArtistImage url on the html
+                      $('#targetArtistImage').attr('src', artistImageUrl);
+                      console.log('target artist image url is ' + artistImageUrl);
+                    }
+                  }else {
+                    console.log('getting images failed');
+                  }
+                }
+              });
+            }
+            getArtistImages(startArtist);
+            getArtistImages(targetArtist);
+
             //invoke getSimilarArtists
             (function getSimilarArtists () {
-              HTTP.get('http://developer.echonest.com/api/v4/artist/similar?api_key=X2VQTSJP3SIFYYMVT&name=' + startArtist + '&format=json&results=12&start=0',
+              HTTP.get('http://developer.echonest.com/api/v4/artist/similar?api_key=X2VQTSJP3SIFYYMVT&name=' + startArtist +'&format=json&results=12&start=0',
                 {},
                 function (error, result) {
                   if (result.statusCode === 200) {
