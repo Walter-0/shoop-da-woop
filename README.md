@@ -23,7 +23,7 @@ The Spoti Game is an explorational game designed to test your music knowledge an
 - [MeteorJS](https://www.meteor.com/): a relatively new, complete open source platform
 for building web and mobile apps in pure JavaScript.
 - [MongoDB](https://www.mongodb.org/): a free, open-source NoSQL database which is fully integrated into Meteor.
-- [The Echo Nest API](http://developer.echonest.com/): offers an incredible array of music data and services for developers to build amazing apps and experiences. 
+- [The Echo Nest API](http://developer.echonest.com/): offers an incredible array of music data and services for developers to build amazing apps and experiences.
 
 
 ## Installation
@@ -41,6 +41,5 @@ for building web and mobile apps in pure JavaScript.
 
 
 ## Unsolved Problems
-- No Images: Finding a reliable source of artist images was difficult, and because of that, there are currently no images displayed in the app.
 - No Mobile Design: This app needs to be redesigned in order to allow for an enjoyable experience on mobile devices.
 - API Calls Too Slow: The HTTP requests for artist and genre data take several seconds and reduce the fluidity of the experience. Rate limits of the HTTP requests currently prevent the app from being used by multiple users simultaneously.
