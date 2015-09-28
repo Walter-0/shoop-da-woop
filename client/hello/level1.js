@@ -56,25 +56,28 @@ Template.hello.events({
             $('#genre2 span').empty().append(genreName);
 
             //http.get top track for current artist only
-            function getArtistTracks() {
-              HTTP.get('https://api.spotify.com/v1/search?q=weezer&type=track&market=us&limit=1',
+            function getArtistTracks(artistName) {
+              HTTP.get('https://api.spotify.com/v1/search?q=' + artistName + '&type=track&market=us&limit=1',
               {},
               function (error, result) {
                 if (result.statusCode === 200) {
                   var trackUrl = result.data.tracks.items[0].preview_url;
-                  console.log(trackUrl);
+                  var audio = $('#currentTrack');
                   $('#currentTrack source').attr('src', trackUrl)
+                  audio[0].pause();
+                  audio[0].load();
+                  audio[0].oncanplaythrough = audio[0].play();
                 }
               })
             }
-            getArtistTracks();
+            getArtistTracks(startArtist);
             //http.get image for each artist
             function getArtistImages(artistName) {
               HTTP.get('https://api.spotify.com/v1/search?q=' + artistName + '&type=artist&limit=1',
               {},
               function (error, result) {
                 if (result.statusCode === 200) {
-                  var artistImageUrl = result.data.artists.items[0].images[0].url
+                  var artistImageUrl = result.data.artists.items[0].images[0].url;
                   if (artistImageUrl) {
                     if (artistName == startArtist) {
                       //set the startArtistImage url on the html
