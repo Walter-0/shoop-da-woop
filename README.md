@@ -1,13 +1,13 @@
-# The Spoti Game
+# The Otifyspay Game
 ## The Next Great Time-Waster
 
-## [Play Now](http://the_spotify_game.meteor.com/)
+## [Play Now](http://google.com/)
 
 ![The Game](/screenshots/screenshot.png?raw=true)
 
 
 ## What Is It?
-The Spoti Game is an explorational game designed to test your music knowledge and discover new music. Users must click their way to a target artist by using the related artists as stepping stones.
+The Otifyspay Game is an explorational game designed to test your music knowledge and discover new music. Users must click their way to a target artist by using the related artists as stepping stones.
 
 ## Example path between Taylor Swift and Deadmau5
 - Taylor Swift
@@ -20,10 +20,10 @@ The Spoti Game is an explorational game designed to test your music knowledge an
 - Deadmau5
 
 ## Technologies Used
-- [MeteorJS](https://www.meteor.com/): a relatively new, complete open source platform
-for building web and mobile apps in pure JavaScript.
-- [MongoDB](https://www.mongodb.org/): a free, open-source NoSQL database which is fully integrated into Meteor.
+- [MeteorJS](http://www.meteor.com/): a relatively new, full-stack, open source platform for building web and mobile apps in pure JavaScript.
+- [MongoDB](http://www.mongodb.org/): a free, open-source NoSQL database which is fully integrated into Meteor.
 - [The Echo Nest API](http://developer.echonest.com/): offers an incredible array of music data and services for developers to build amazing apps and experiences.
+- [The Spotify API](http://developer.spotify.com/web-api/): Web API endpoints that return metadata in JSON format about artists, albums, and tracks directly from the Spotify catalogue.
 
 
 ## Installation

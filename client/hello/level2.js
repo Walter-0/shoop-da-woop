@@ -103,26 +103,26 @@ Template.hello.events({
             {},
             function (error, result) {
               if (result.statusCode === 200) {
-                var artistImageUrl = result.data.artists.items[0].images[0].url
-                if (artistImageUrl) {
+                if (result.data.artists.items[0].images.length == 0)  {
+                  console.log('no images, running again');
+                  getGenre1Number();
+                  getGenre1Artists();
+                }
+                var artistImageUrl = result.data.artists.items[0].images[0].url;
                   if (artistName == startArtist) {
                     //set the startArtistImage url on the html
                     $('#currentArtistImage').attr('src', artistImageUrl);
                   }
-                }else {
-                  console.log('getting images failed');
-                }
+              }else {
+                console.log('getting images failed');
               }
-            });
+            })
           };
           getArtistImages(startArtist);
-
-
         });
       });
-
-
     };
+
     //THEN for the target genre
 
     //http.get similar genres to starting genre

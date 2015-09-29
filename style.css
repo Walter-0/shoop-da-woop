@@ -32,8 +32,8 @@ body{
 
 .rules{
   line-height: 1.8em;
-  text-align: justify;
-  font-size: .8em;
+  text-align: left;
+  font-size: .7em;
   color: #9B6F77;
   padding: .2em;
   border: 3px solid black;
