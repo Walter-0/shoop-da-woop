@@ -11,8 +11,8 @@ Template.hello.events({
   'click h2.start1': function () {
 
     currentLevel = 1;
-    $('.genre1').show();
-    $('.genre2').show();
+    $('#genre1').show();
+    $('#genre2').show();
 
     var genreName;
     //generate random number
@@ -61,12 +61,20 @@ Template.hello.events({
               {},
               function (error, result) {
                 if (result.statusCode === 200) {
+
+                  //append song title to html
+                  var songTitle = result.data.tracks.items[0].name;
+                  $('#songTitle').html(songTitle);
+
                   var trackUrl = result.data.tracks.items[0].preview_url;
+                  //append audio url to html and play audio
                   var audio = $('#currentTrack');
-                  $('#currentTrack source').attr('src', trackUrl)
+                  $('#currentTrack source').attr('src', trackUrl);
                   audio[0].pause();
                   audio[0].load();
                   audio[0].oncanplaythrough = audio[0].play();
+                }else {
+                  console.log('getting tracks failed');
                 }
               })
             }

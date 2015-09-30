@@ -1,12 +1,13 @@
 body{
-  width: 100vw;
   margin: 0;
+  width: 100%;
   height: 100%;
 }
 
 .container{
   display: flex;
   height: 100%;
+  width: 100%;
   font-family: 'Press Start 2P', cursive;
 }
 
@@ -18,11 +19,11 @@ body{
   background-color: #213A16;
   color: #C2D3BB;
   width: 30%;
-  padding: 0 .5em;
+  padding: 0 .5em 3em .5em;
 }
 
 .title{
-  font-size: 3em;
+  font-size: 2.5em;
   color: #C2D3BB;
 }
 
@@ -31,11 +32,11 @@ body{
 }
 
 .rules{
-  line-height: 1.8em;
-  text-align: left;
+  line-height: 1.5em;
+  text-align: center;
   font-size: .7em;
   color: #9B6F77;
-  padding: .2em;
+  padding: .5em;
   border: 3px solid black;
 }
 
@@ -80,16 +81,20 @@ input{
   flex-direction: row;
   align-content: space-between;
   margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .start{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  text-align: center;
+  justify-content: center;
   border: 2px solid black;
   border-radius: 15px;
-  margin: auto .4em;
+  margin: auto .2em;
   width: 20em;
+  height: 3em;
 }
 
 .start:hover{
@@ -98,11 +103,15 @@ input{
 
 .interface{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-content: space-around;
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.hideinterface{
+  display: none;
 }
 
 .interface h2{
@@ -112,31 +121,17 @@ input{
   padding: .5em;
 }
 
-.artistContainer h2{
-  border-right: 2px solid black;
-}
-
-.genreContainer h2{
-  border: 2px solid black;
-}
-
 .interface span{
   color: #5C2C35;
 }
 
-.hideinterface{
-  display: none;
-}
 
-.interface img {
-  border-radius: 15px;
-  width: 15em;
-  height: 15em;
-}
-
-.flashWin{
-  display: none;
-  text-align: center;
+.artistContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-bottom: 1em;
 }
 
 .targetArtistContainer,
@@ -145,7 +140,35 @@ input{
   flex-direction: row;
   border: 2px solid black;
   border-radius: 15px;
-  width: 30em;
+  width: auto;
+  max-width: 31em;
+}
+
+.artistContainer h2{
+  border-right: 2px solid black;
+}
+
+.artistContainer img {
+  border-radius: 15px;
+  width: 13em;
+  height: 16em;
+}
+
+.genreContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.genreContainer h2{
+  border: 2px solid black;
+  width: auto;
+  max-width: 20em;
+}
+
+.flashWin{
+  display: none;
+  text-align: center;
 }
 
 
@@ -154,19 +177,19 @@ input{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
 .artists li{
   list-style-type: none;
   display: block;
-  margin: 1em 2em;
+  margin: 1em;
   border: 2px solid black;
   border-radius: 15px;
   text-align: center;
   font-size: 1.1em;
-  padding: .4em;
+  padding: .5em;
 }
 
 .artists li:hover{

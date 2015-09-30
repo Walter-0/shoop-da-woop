@@ -67,6 +67,11 @@ Template.hello.events({
       {},
       function (error, result) {
         if (result.statusCode === 200) {
+
+          //append song title to html
+          var songTitle = result.data.tracks.items[0].name;
+          $('#songTitle').html(songTitle);
+          //append song url to html and play audio
           var trackUrl = result.data.tracks.items[0].preview_url;
           var audio = $('#currentTrack');
           $('#currentTrack source').attr('src', trackUrl)
@@ -76,7 +81,7 @@ Template.hello.events({
         }
       })
     };
-    
+
     getRandomOffset();
     getArtists();
   }

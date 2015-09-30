@@ -33,13 +33,25 @@ The Otifyspay Game is an explorational game designed to test your music knowledg
 - In your browser, enter the url `localhost:3000`.
 
 
-## User Stories
-- As a user, I should be able to log in and save my scores, so that I can return to the same progress.
-- As a user, I should be able to choose a level of difficulty, so I can feel comfortable with my current music knowledge.
-- As a user, I should be able to click on related artists in order to reach the target artist.
-- As a user, I should be able to have a similar experience on devices of all sizes, so that I can play the game on all my devices.
 
 
 ## Unsolved Problems
 - No Mobile Design: This app needs to be redesigned in order to allow for an enjoyable experience on mobile devices.
 - API Calls Too Slow: The HTTP requests for artist and genre data take several seconds and reduce the fluidity of the experience. Rate limits of the HTTP requests currently prevent the app from being used by multiple users simultaneously.
+- HTML/Unicode Formatting : Artists with an '&' cannot be queried to get related artist list, but they can get the artist track and image. The Spotify API can handle '&', but the EchoNest API cannot.
+  - The symbols '$', '@', '-' are working.
+
+## API Issues
+- Not only are some artists missing images and songs, some artists are linked to incorrect songs.
+  - Ex: The artist Earth, a drone metal group, linked to Earth, Wind, and Fire's song September.
+- Some artists are duplicated in their list of related artists because of punctuation differences.
+  - Ampersands: Earth, Wind, and Fire vs Earth, Wind, & Fire
+  - Apostrophes: Lil' Jon vs Lil Jon
+  - Accent marks: Daphné vs Daphne
+  - Spaces: J.Rabbit vs J. Rabbit
+  - Multiple names: Alva Noto, alva.noto, and Noto
+  - Missing 'A': Day at the Fair vs A Day At The Fair
+- Some artists are linked to songs that are not theirs, but share the same or similar name.
+  - The band The Ghost Inside, linked to a song titled The Ghost Inside, by Broken Bells.
+  - The band Blitz linked to a song titled Ballroom Blitz, by Sweet .
+  - The band Six Feet Under linked to a song titled Six Feet Under The Stars by All Time Low.

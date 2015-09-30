@@ -9,7 +9,7 @@ Template.hello.events({
     var nextArtist = $(event.target).text();
 
 
-    HTTP.get('http://developer.echonest.com/api/v4/artist/similar?api_key=X2VQTSJP3SIFYYMVT&name=' + nextArtist + '&format=json&results=12&start=0',
+    HTTP.get('http://developer.echonest.com/api/v4/artist/similar?api_key=X2VQTSJP3SIFYYMVT&name=' + nextArtist + '&format=json&results=16&start=0',
       {},
       function (error, result) {
         if (result.statusCode === 200) {
@@ -31,6 +31,9 @@ Template.hello.events({
       {},
       function (error, result) {
         if (result.statusCode === 200) {
+          var songTitle = result.data.tracks.items[0].name;
+          $('#songTitle').html(songTitle);
+
           var trackUrl = result.data.tracks.items[0].preview_url;
           var audio = $('#currentTrack');
           $('#currentTrack source').attr('src', trackUrl)
