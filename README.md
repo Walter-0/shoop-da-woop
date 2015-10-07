@@ -1,4 +1,5 @@
-# The Otifyspay Game
+# The Spotify Game
+### (No Longer in Development as of 10/4/15)
 ## The Next Great Time-Waster
 
 ## [Play Now](http://google.com/)
@@ -7,7 +8,7 @@
 
 
 ## What Is It?
-The Otifyspay Game is an explorational game designed to test your music knowledge and discover new music. Users must click their way to a target artist by using the related artists as stepping stones.
+The Spotify Game is an explorational game designed to test your music knowledge and discover new music. Users must click their way to a target artist by using the related artists as stepping stones.
 
 ## Example path between Taylor Swift and Deadmau5
 - Taylor Swift
@@ -27,12 +28,11 @@ The Otifyspay Game is an explorational game designed to test your music knowledg
 
 
 ## Installation
-- To create a new Meteor application, run `meteor create <app_name>`.
+- Download and install [meteor](https://www.meteor.com/).
+- To create a new Meteor application, run `meteor create <app_name>` in a terminal window.
 - `cd <app_name>` into the <app_name> directory.
 - Type `meteor` to start the local server.
 - In your browser, enter the url `localhost:3000`.
-
-
 
 
 ## Unsolved Problems
