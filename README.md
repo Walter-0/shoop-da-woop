@@ -1,5 +1,5 @@
 # The Spotify Game
-### (No Longer in Development as of 10/4/15)
+### (No longer maintained as of 10/4/15)
 ## The Next Great Time-Waster
 
 ## [Play Now](http://google.com/)
