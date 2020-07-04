@@ -2,8 +2,6 @@
 ### (No longer maintained as of 10/4/15)
 ## The Next Great Time-Waster
 
-## [Play Now](http://google.com/)
-
 ![The Game](/screenshots/screenshot.png?raw=true)
 
 
